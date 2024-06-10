@@ -333,6 +333,9 @@ function RemoveItemsAfterRPDeath()
 end
 
 function RespawnPed(ped, coords, heading)
+  if exports['highqez_crawldead']:IsCrawling() then  -- Added Code (highqez_crawldead)
+    exports['highqez_crawldead']:EndCrawl()          -- Added Code (highqez_crawldead)
+  end                                                -- Added Code (highqez_crawldead)
   SetEntityCoordsNoOffset(ped, coords.x, coords.y, coords.z, false, false, false)
   NetworkResurrectLocalPlayer(coords.x, coords.y, coords.z, heading, true, false)
   SetPlayerInvincible(ped, false)
